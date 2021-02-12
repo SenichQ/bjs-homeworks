@@ -43,11 +43,10 @@ describe('Домашнее задание к занятию 1.2 «Расшире
       expect(askDrink(name, date)).toEqual(actualResult);
     });
 
-    it('должна предлагать клюквенный компот', () => {
+    it('Задача №3 должна предлагать клюквенный компот', () => {
       const name = 'Иван';
       const date = new Date();
-      date.setFullYear(date.getFullYear() - 5); //выставляем пользователю 5 лет
-      const actualResult = `Сожалею, ${name}, но я не могу вам продать алкоголь. Могу предложить вам замечательный клюквенный компот!`;
+      const actualResult = `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
       expect(askDrink(name, date)).toEqual(actualResult);
     });
   });

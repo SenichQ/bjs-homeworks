@@ -24,7 +24,7 @@ function getAverageMark(marks) {
 	if (marks.length === 0) {
 		return 0;
 	} else if (marks.length > 5) {
-		console.log('количество оценое больше 5');
+		console.log('количество оценое больше 5');	
 		marks = marks.slice(0, 5);
 	}
 
