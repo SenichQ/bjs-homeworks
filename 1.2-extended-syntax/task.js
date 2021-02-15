@@ -1,40 +1,44 @@
-`use strict`
-
+"use strict";
 function getResult(a,b,c){
-    let equationResult = [];
-    if (a === 0) {
-        equationResult[0] = -c / b;
-        return equationResult;
+    let d = b * b - 4 * a * c;
+    let x = [];
+    if (d == 0) {
+        x = [-b / (2 * a)];
+    } else if (d > 0) {
+        x = [(-b + Math.sqrt(d)) / (2 * a),(-b - Math.sqrt(d)) / (2 * a)];
     }
-    let discriminant = Math.pow(b, 2) - 4 * a * c;
-    if (discriminant > 0) {
-        equationResult[0] = parseInt((( -b + Math.sqrt(discriminant)) / (2 * a)).toFixed(0));
-        equationResult[1] = parseInt((( -b - Math.sqrt(discriminant)) / (2 * a)).toFixed(0));
-    }
-    else if (discriminant === 0) {
-        equationResult[0] = -b / (2 * a);
-    }
-    return equationResult;
+    return(x);
 }
 
 function getAverageMark(marks){
-    let averageMark = 0;
-    if (marks.length > 0) {
-        let sum = 0;
-        let countMarks = 5;
-        if (marks.length < 5) {
-            countMarks = marks.length;
+    let averageMark;
+    if (marks.length == 0) {
+        return(marks.length);
+    } else {
+        marks.splice(5);
+        let numberSumMarks = 0;
+        let sumMarks = 0;
+        for (let i = 0; i <= marks.length; i++) {
+            numberSumMarks = Number(sumMarks);
+            sumMarks += marks[i];
         }
-        for (i = 0; i < countMarks; i++) {
-            sum = sum + marks[i];
-        }
-        averageMark = sum / countMarks;
-        return averageMark;
+        averageMark = numberSumMarks/marks.length;
     }
-    return averageMark;
+    return(averageMark);
 }
 
 function askDrink(name,dateOfBirthday){
-    let adultFlag = new Date().getFullYear() - dateOfBirthday.getFullYear();
-    result = (adultFlag >= 18) ? `Не желаете ли олд-фэшн, ${name}?` : `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
-    return result;
+    let numberDateOfbirthday = 0;
+    let userAge = 0;
+    numberDateOfbirthday = new Date(dateOfBirthday).getFullYear();
+    let currentYear = new Date().getFullYear();
+    console.log(currentYear);
+    console.log(numberDateOfbirthday);
+    userAge = currentYear - numberDateOfbirthday;
+    console.log(userAge);
+    if (userAge < 18){
+        return(`Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`)
+    } else {
+        return(`Не желаете ли олд-фэшн, ${name}?`)
+    }
+}
